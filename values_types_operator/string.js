@@ -39,3 +39,4 @@ for everything`
 // encoding ฮิตๆ ที่เราน่าจะเคยได้ยินเช่น utf8, ascii, tis620 and etc.
 
 // Unicode
+

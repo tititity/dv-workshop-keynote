@@ -94,3 +94,12 @@ console.log(' \t\r\n ' == 0);    // true
 
 // *ประเด็น คือ อย่าพยายามทำ binary operator ข้าม type
 // และเราควรใช้ Javascript Linting เพื่อชีวิตที่ดี
+
+// Short-Curcuit
+// พฤติกรรมของ && และ || เนี่ย นอกจากจะเราไว้เปรียบเทียบแล้ว
+// มันสามารถ return ค่าได้ด้วย
+
+console.log(null || "user") // 'user'
+console.log("Pongneng" || "user") // 'Pongneng'
+
+// สามารถไว้ทำ default value ได้ เช่น
