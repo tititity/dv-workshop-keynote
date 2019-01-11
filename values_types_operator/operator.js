@@ -92,6 +92,9 @@ console.log(false == null);      // false
 console.log(null == undefined);  // true
 console.log(' \t\r\n ' == 0);    // true
 
+// อันนี้ชอบสุดเลย
+// https://gist.github.com/ehudthelefthand/fa5e886ebcf6086ecc4adb41f0ed30e3
+
 // *ประเด็น คือ อย่าพยายามทำ binary operator ข้าม type
 // และเราควรใช้ Javascript Linting เพื่อชีวิตที่ดี
 
@@ -99,7 +102,53 @@ console.log(' \t\r\n ' == 0);    // true
 // พฤติกรรมของ && และ || เนี่ย นอกจากจะเราไว้เปรียบเทียบแล้ว
 // มันสามารถ return ค่าได้ด้วย
 
+// || ถ้าเกิดว่าตัวแรกเป็น true มันจะไม่ evaluate ตัวที่สอง แล้ว return เลย
+// แต่ถ้าตัวแรกเป็น false มันจะ evaluate ตัวที่สองแล้วค่อย return
 console.log(null || "user") // 'user'
 console.log("Pongneng" || "user") // 'Pongneng'
 
 // สามารถไว้ทำ default value ได้ เช่น
+
+let person = {
+    name: "Pongneng",
+    age: 31
+}
+
+console.log(person.job || "unemployed") // 'unemployed'
+
+person.job = "developer"
+
+console.log(person.job || "unemployed") // 'developer'
+
+// && ถ้าเกิดว่าตัวแรกเป็น false มันจะไม่ evaluate ตัวที่สอง แล้ว return เลย
+// แต่ถ้าตัวแรกเป็น true มันจะ evaluate ตัวที่สอง แล้วค่อย return
+
+console.log(null && "user") // null
+console.log("Pongneng" && "user") // 'user'
+
+// สามารถมาใช้ทำ guard case ได้
+
+// อันนี้แค่ fake ไว้เฉยๆ นะครับ
+function calculateSalary() {
+    return 1000;
+}
+
+let person = {
+    name: "Pongneng",
+    age: 31,
+    salary: function() {
+        if (this.job) {
+            return calculateSalary(this)
+        }
+    }
+}
+
+// มีค่าเท่ากับ
+
+let person = {
+    name: "Pongneng",
+    age: 31,
+    salary: function() {
+        return this.job && calculateSalary(this)
+    }
+}
