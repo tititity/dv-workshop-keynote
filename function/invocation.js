@@ -57,3 +57,7 @@ sum.call(b, 5, 6, 7, 8)
 b.result // 26
 
 // สังเกตุว่าเราสามารถเปลี่ยน context ของ function ได้ด้วย method apply และ call
+
+// ปัญหาของ function context ที่พบบ่อยคือการผสม Javascript code เข้ากับ
+// DOM API ซึ่งเมื่อ binding context ไม่ถูกต้อง อาจจะเจอผลลัพท์ที่ไม่คาดคิด
+// ดู ต.ย. ได้จาก problem_with_context directory

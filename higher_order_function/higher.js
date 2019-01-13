@@ -1,58 +1,79 @@
+// Abstractions
+// คิดว่า style ไหนเกิด bug ได้ ง่ายกว่ากัน
 
-// การที่ function ด้านในสามารถอ้างอิงถึง local variable 
-// ของ function ที่ครอบมันอยู่แม้จะ return ไปแล้วก็ตาม
-// สิ่งนี้เรียกว่า closure
-
-// Fuction is first class object
-// คือการบอกว่า function ทุกอย่างได้เหมือน object นั่นแหละ
-// แต่ function มันเจ๋งกว่า object ตรงที่มัน invoke ได้
-// แล้ว object ทำอะไรได้บ้าง
-
-{} // ประกาศด้วย literal
-
-let person = {}; // assign ไว้ที่ตัวแปรได้
-
-let person_list = [];
-pererson_list.push({}); // เก็บใน array ได้
-
-person.profile = {}; // assign เป็น property ของ object อีกตัวก็ได้
-
-function take_leave(person) {
-  person.absent = true;
+let total = 0,
+  count = 1
+while (count <= 10) {
+  total += count
+  count += 1
 }
-take_leave({}); // pass เข้าไปใน function อื่นก็ได้
+console.log(total)
 
-function newPersion() {
-  return {}; // return จาก function ได้
-}
+// และ
 
-let pongneng = {};
-pongneng.age = 31; // assign property ใหม่ของตัวเองแบบ dynamic ได้เลย
+console.log(sum(range(1, 10)))
 
-// function ทำได้ทุกอย่างเหมือน object
+// แบบที่สองมีแนวโน้มจะเกิด bug น้อยกว่าเพราะว่า เป็น pure function
+// ซึ่ง test ได้ง่าย และ แต่ละ function ทำหน้าที่เล็กของตัวเองแค่อย่างเดียว
+// การสร้าง function ใหม่เป็น function เล็กๆ ที่ทำหน้าที่แค่อย่างเดียวนี่
+// เรียกว่า Abstraction
 
-function someFunction() {} // ประกาศด้วย literal
+// Abstract Repetition
+// ปกติเราจะ loop print เลขก็จะเขียนโค้ดประมาณนี้
 
-let someFunction = function() {}; // assign ไว้ที่ตัวแปรได้
-
-let some_list = [];
-some_list.push(function() {}); // เก็บใน array ได้
-
-person.data = function() {}; // assign เป็น property ของ object อีกตัวก็ได้
-
-function call(someFunction) {
-  someFunction();
-}
-call(function() {}); // pass เข้าไปใน function อื่นก็ได้
-
-function execute() {
-  return function() {}; // return จาก function ได้
+for (let i = 0; i < 10; i++) {
+  console.log(i)
 }
 
-let personFunction = function() {};
-personFunction.name = "Pongneng"; // assign property ใหม่ของตัวเองแบบ dynamic ได้เลย
+// แต่ถ้าเราอยากทำ N ครั้ง?
+
+function repeatLog(n) {
+  for (let i = 0; i < n; i++) {
+    console.log(i)
+  }   
+}
+
+// แล้วถ้าเราไม่อยากแค่ log?
+
+function repeat(n, action) {
+  for (let i = 0; i < n; i++) {
+    action(i)
+  }
+}
+
+repeat(3, conosole.log)
+
+let labels = []
+repeat(5, i => { labels.push(`Unit ${i + 1}`) })
+console.log(labels)
 
 // Higher Order Function
+// ก็คือการที่ function สามารถ pass เป็น argument หรือ return ได้
+// ซึ่งช่วยให้เราสร้าง abstraction ได้ง่ายขึ้น
+// เช่น
 
-// Callback: รายละเอียดใน callback dir
+function greaterThan(n) {
+  return m => m > n
+}
+let greaterThan10 = greaterThan(10)
+console.log(greaterThan10(11)) // true
 
+// หรือสร้าง function เพื่อเพิ่มพฤติกรรมของอีก function หนึ่ง
+
+function noisy(f) {
+  return (...args) => {
+    console.log("calling with", args)
+    let result = f(...args)
+    console.log("called with", args, ", returned", result)
+    return result
+  }
+}
+noisy(Math.min)(3, 2, 1)
+// calling with [3, 2, 1]
+// called with [3, 2, 1] , returned 1
+
+// higher-order functions ถูกนำไปใช้มากเวลาทำ data processing ดู ต.ย. ได้จาก data_processing directory
+// 
+// filter คือการ กรอง
+// map คือการ transform
+// redunce คือการ summarize ข้อมูล
