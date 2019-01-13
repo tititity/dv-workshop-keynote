@@ -1,5 +1,17 @@
 // Function
 
+// Defining Function
+
+function square(x) {
+    return x * x
+}
+
+const makeNoise = function() {
+    console.log("Duhhh!")
+}
+
+
+
 // Fnction is first class object
 // คือการบอกว่า function ทุกอย่างได้เหมือน object นั่นแหละ
 // แต่ function มันเจ๋งกว่า object ตรงที่มัน invoke ได้
@@ -49,6 +61,8 @@ function execute() {
 let personFunction = function(){}
 personFunction.name = "Pongneng" // assign property ใหม่ของตัวเองแบบ dynamic ได้เลย
 
+
+// Higher Order Function
 
 // Callback: รายละเอียดใน callback dir
 
