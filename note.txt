@@ -1,0 +1,9 @@
+ch1. value, type, operator
+ch2. program structure
+ch3. function
+ch4. array object
+ch5. higher order function
+ch6. object
+ch7. prototype class
+ch8. javascript in the browser
+ch9. javascript in the server

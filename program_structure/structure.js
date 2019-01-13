@@ -63,7 +63,7 @@ Math.max(2, 4); // 4
 // If-else
 
 let theNumber = Number(prompt("Pick a number"));
-if (!Number.isNaN(theNumber)) {
+if (!Number.isNaN(theNumber)) { // ในวงเว็บปีกกา {} อันนี้เรียกว่า block
   console.log("Your number is the square root of " + theNumber * theNumber);
 } else {
   console.log("Hey. Why didn't you give me a number?");

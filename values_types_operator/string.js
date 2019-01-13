@@ -28,6 +28,10 @@ for everything`
 
 "Look !" + " I'm" + " concating the" + " string"
 
+// ถ้าต้องการเปลี่ยน number เป็น string
+
+String(10) // "10"
+
 // String encoding
 // อย่างที่เรารู้อยู่แล้วว่า value ใน computer มันมีได้หลาย type ซึ่งแต่ละ type ก็มี 
 // bit pattern และ memory block ที่ไม่เหมือนกัน แม้แต่ข้อมูลที่เป็นตัวเลขเหมือนกัน อาจจะมี bit pattern
@@ -140,3 +144,22 @@ require('punycode').ucs2.decode('💩').length // 1
 // part-3: https://www.youtube.com/watch?v=vLBtrd9Ar28﻿
 // สำเนียง british
 // อันนี้เรื่อง utf8 ครับ: https://www.youtube.com/watch?v=MijmeoH9LT4
+
+
+// รวม string method ที่น่าสนใจ และใช้บ่อย
+
+console.log("coconuts".slice(4, 7)) // nut
+console.log("coconut".indexOf("u")) // 5
+console.log("  okay \n ".trim()) // okay
+console.log(String(6).padStart(3, "0")) // 006
+
+let sentence = "Secretarybirds specialize in stomping"
+let words = sentence.split(" ")
+console.log(words) // ["Secretarybirds", "specialize", "in", "stomping"]
+console.log(words.join(". ")) // Secretarybirds. specialize. in. stomping
+
+console.log("LA".repeat(3)) // LALALA
+
+let string = "abc";
+console.log(string.length) // 3
+console.log(string[1]) // b
