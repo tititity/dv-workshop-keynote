@@ -76,4 +76,5 @@ noisy(Math.min)(3, 2, 1)
 // 
 // filter คือการ กรอง
 // map คือการ transform
-// redunce คือการ summarize ข้อมูล
+// reduce คือการ summarize ข้อมูล
+// higher-order function ช่วยให้ composibility สูงขึ้น
